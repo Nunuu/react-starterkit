@@ -6,9 +6,12 @@
 
 ## What's Included
 
-1. This template initiates a React project directory with [vite](https://vitejs.dev/)
+1. This template initiates a React project directory using [vite](https://vitejs.dev/) with the following:
+   - [pnpm](https://pnpm.io/)
+   - [TypeScript](https://www.typescriptlang.org/)
+   - [swc](https://swc.rs/)
+   - [ESLint](https://eslint.org/)
 2. It includes [VSCode](https://code.visualstudio.com/) settings to do the following on save:
-
-   - Auto format with `prettier`
+   - Auto format with [prettier](https://prettier.io/)
    - Auto fix `ESLint` errors
    - Auto organize import statements

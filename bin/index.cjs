@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const shell = require('shelljs');
+const path = require('path');
 
 const appName = process.argv[2];
 const appDirectory = `${process.cwd()}/${appName}`;
@@ -11,7 +12,6 @@ const run = async () => {
 	if (!success) {
 		return false;
 	}
-	await cdIntoNewApp();
 	await installPackages();
 	await createTemplates();
 	await modifyGitIgnore();
@@ -23,7 +23,7 @@ const createApp = () => {
 		if (!appName) {
 			console.log('\nNo app name was provided.');
 			console.log('\nProvide an app name in the following format: ');
-			console.log('\ninit-react-app ', 'app-name\n');
+			console.log('\nreact-starterkit ', 'app-name\n');
 			resolve(false);
 		}
 
@@ -33,18 +33,10 @@ const createApp = () => {
 	});
 };
 
-const cdIntoNewApp = () => {
-	return new Promise((resolve) => {
-		shell.exec(`cd ${appName}`, () => {
-			resolve();
-		});
-	});
-};
-
 const installPackages = () => {
 	return new Promise((resolve) => {
 		console.log('\nInstalling prettier, eslint-config-prettier\n');
-		shell.exec(`pnpm add -D prettier eslint-config-prettier`, () => {
+		shell.exec(`cd ${appName} && pnpm add -D prettier eslint-config-prettier`, () => {
 			console.log('\nFinished installing packages\n');
 			resolve();
 		});
@@ -55,7 +47,7 @@ const createTemplates = () => {
 	return new Promise((resolve) => {
 		const promises = templates.map((templateInfo) => {
 			const { source, destination } = templateInfo;
-			return new Promise((res) => {
+			return new Promise((fileResolve) => {
 				const destFile = destination || source;
 				const dirName = destFile.substring(0, destFile.lastIndexOf('/'));
 				if (dirName) {
@@ -65,11 +57,12 @@ const createTemplates = () => {
 					}
 				}
 
-				fs.copyFile(source, `${appDirectory}/${destFile}`, (err) => {
+				const packageFile = `${path.dirname(require.main.filename)}/../${source}`;
+				fs.copyFile(packageFile, `${appDirectory}/${destFile}`, (err) => {
 					if (err) {
 						return console.log(err);
 					}
-					res();
+					fileResolve();
 				});
 			});
 		});
