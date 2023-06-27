@@ -1,0 +1,18 @@
+{
+	"name": "react-starterkit",
+	"version": "1.0.0",
+	"description": "CLI (Command Line Interface) that initiates a React project using create vite with prettier/eslint setup for autocorrect on save.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "Ying He",
+	"license": "ISC",
+	"bin": {
+		"react-starterkit": "./bin/index.cjs"
+	},
+	"devDependencies": {
+		"shelljs": "^0.8.5"
+	}
+}
