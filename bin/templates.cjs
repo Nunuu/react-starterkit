@@ -1,7 +1,18 @@
 module.exports = [
-	'.prettierignore',
-	'.prettierrc.json',
-	'README.md',
-	'.vscode/extensions.json',
-	'.vscode/settings.json',
+	{
+		source: '.prettierignore',
+	},
+	{
+		source: '.prettierrc.json',
+	},
+	{
+		source: 'templates/README.md',
+		destination: 'README.md',
+	},
+	{
+		source: '.vscode/extensions.json',
+	},
+	{
+		source: '.vscode/settings.json',
+	},
 ];

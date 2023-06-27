@@ -53,9 +53,11 @@ const installPackages = () => {
 
 const createTemplates = () => {
 	return new Promise((resolve) => {
-		const promises = templates.map((fileName) => {
+		const promises = templates.map((templateInfo) => {
+			const { source, destination } = templateInfo;
 			return new Promise((res) => {
-				const dirName = fileName.substring(0, fileName.lastIndexOf('/'));
+				const destFile = destination || source;
+				const dirName = destFile.substring(0, destFile.lastIndexOf('/'));
 				if (dirName) {
 					const destinationDir = `${appDirectory}/${dirName}`;
 					if (!fs.existsSync(destinationDir)) {
@@ -63,7 +65,7 @@ const createTemplates = () => {
 					}
 				}
 
-				fs.copyFile(fileName, `${appDirectory}/${fileName}`, (err) => {
+				fs.copyFile(source, `${appDirectory}/${destFile}`, (err) => {
 					if (err) {
 						return console.log(err);
 					}

@@ -1,18 +1,30 @@
 {
-	"name": "react-starterkit",
+	"name": "@nunuu/react-starterkit",
 	"version": "1.0.0",
 	"description": "CLI (Command Line Interface) that initiates a React project using create vite with prettier/eslint setup for autocorrect on save.",
-	"main": "index.js",
+	"main": "./bin/index.cjs",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"keywords": [],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Nunuu/react-starterkit.git"
+	},
+	"keywords": [
+		"react",
+		"cli",
+		"vite",
+		"typescript",
+		"eslint",
+		"prettier",
+		"front-end"
+	],
 	"author": "Ying He",
 	"license": "ISC",
 	"bin": {
-		"react-starterkit": "./bin/index.cjs"
+		"@nunuu/react-starterkit": "./bin/index.cjs"
 	},
-	"devDependencies": {
+	"dependencies": {
 		"shelljs": "^0.8.5"
 	}
 }
