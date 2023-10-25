@@ -1,6 +1,6 @@
 {
 	"name": "@nunuu/react-starterkit",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "CLI (Command Line Interface) that initiates a React project using create vite with prettier/eslint setup for autocorrect on save.",
 	"main": "./bin/index.cjs",
 	"scripts": {
