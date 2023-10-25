@@ -72,7 +72,6 @@ const installPackages = async () => {
 		'@testing-library/react',
 		'@testing-library/jest-dom',
 		'jest-environment-jsdom',
-		'@types/testing-library__jest-dom',
 		'jest-svg-transformer',
 		'identity-obj-proxy',
 		'eslint-plugin-jest',
